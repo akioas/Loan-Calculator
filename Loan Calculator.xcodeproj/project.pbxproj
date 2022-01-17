@@ -18,6 +18,7 @@
 		4A71F089279586300016F3DA /* Loan_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A71F088279586300016F3DA /* Loan_CalculatorUITests.swift */; };
 		4A71F08B279586300016F3DA /* Loan_CalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A71F08A279586300016F3DA /* Loan_CalculatorUITestsLaunchTests.swift */; };
 		4A71F09827958A3A0016F3DA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A71F09727958A3A0016F3DA /* Model.swift */; };
+		4A71F09A2795BFF60016F3DA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A71F0992795BFF60016F3DA /* Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4A71F088279586300016F3DA /* Loan_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan_CalculatorUITests.swift; sourceTree = "<group>"; };
 		4A71F08A279586300016F3DA /* Loan_CalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan_CalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4A71F09727958A3A0016F3DA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4A71F0992795BFF60016F3DA /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				4A71F0662795862E0016F3DA /* SceneDelegate.swift */,
 				4A71F0682795862E0016F3DA /* ViewController.swift */,
 				4A71F09727958A3A0016F3DA /* Model.swift */,
+				4A71F0992795BFF60016F3DA /* Controller.swift */,
 				4A71F06A2795862E0016F3DA /* Main.storyboard */,
 				4A71F0702795862F0016F3DA /* Assets.xcassets */,
 				4A71F0722795862F0016F3DA /* LaunchScreen.storyboard */,
@@ -267,6 +270,7 @@
 				4A71F09827958A3A0016F3DA /* Model.swift in Sources */,
 				4A71F0692795862E0016F3DA /* ViewController.swift in Sources */,
 				4A71F0652795862E0016F3DA /* AppDelegate.swift in Sources */,
+				4A71F09A2795BFF60016F3DA /* Controller.swift in Sources */,
 				4A71F0672795862E0016F3DA /* SceneDelegate.swift in Sources */,
 				4A71F06F2795862E0016F3DA /* Loan_Calculator.xcdatamodeld in Sources */,
 			);
