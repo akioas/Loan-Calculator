@@ -71,7 +71,7 @@ class ViewController: UIViewController {
     @IBAction func sent5(_ sender: UITextField) {
         removeNonDigits(sender)
             if let value = text5.text {
-//                nLabel.text = value
+                
                 monthlyPayment = Int(value) ?? 0
                 
             }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     @IBAction func firstSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
-//            switch2.setOn(false, animated: true)
+
             switch3.setOn(false, animated: true)
             switch4.setOn(false, animated: true)
             method.text = "Расчет суммы кредита по % годовых, сроку кредита и ежемесячному платежу"
@@ -110,8 +110,9 @@ class ViewController: UIViewController {
                 var years = 0
                 var months = 0
                 var payment = 0.0
-                method.text = "Расчет срока выплат по сумме кредита, % годовых и ежемесячному платежу"
+                
                 (monthsAmount, months, years, payment) = ReturnModel().thirdReturn(mortgageAmount: mortgageAmount, monthlyPayment: monthlyPayment,yearPercent:yearPercent)
+                method.text = "Расчет срока выплат по сумме кредита, % годовых и ежемесячному платежу"
                 text3.text = String(years)
                 text4.text = String(months)
                 response.text = String(format: "%.2f", payment) + "%"
@@ -122,15 +123,15 @@ class ViewController: UIViewController {
     }
     @IBAction func fourthSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
-//            switch2.setOn(false, animated: true)
+
             switch3.setOn(false, animated: true)
             switch1.setOn(false, animated: true)
             
             if !((yearPercent == 0) || (mortgageAmount == 0) || (monthsAmount == 0)){
-                var monthlyPayment = 0
+                var monthlyPayment = 0.0
                 var payment = 0.0
                 
-                (monthsAmount, payment) = ReturnModel().fourthReturn(mortgageAmount: mortgageAmount, monthsAmount: monthsAmount, yearPercent: yearPercent)
+                (monthlyPayment, payment) = ReturnModel().fourthReturn(mortgageAmount: mortgageAmount, monthsAmount: monthsAmount, yearPercent: yearPercent)
                 text5.text = String(format: "%.2f", monthlyPayment)
                 method.text = "Расчет Ежемесячного платежа по сумме кредита, % годовых и сроку кредита"
                 

@@ -107,8 +107,8 @@
 			children = (
 				4A71F0642795862E0016F3DA /* AppDelegate.swift */,
 				4A71F0662795862E0016F3DA /* SceneDelegate.swift */,
-				4A71F0682795862E0016F3DA /* ViewController.swift */,
 				4A71F09727958A3A0016F3DA /* Model.swift */,
+				4A71F0682795862E0016F3DA /* ViewController.swift */,
 				4A71F0992795BFF60016F3DA /* Controller.swift */,
 				4A71F06A2795862E0016F3DA /* Main.storyboard */,
 				4A71F0702795862F0016F3DA /* Assets.xcassets */,
