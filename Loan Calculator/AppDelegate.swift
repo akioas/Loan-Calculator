@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  Loan Calculator
-//
-//  Created by Катя on 17.01.2022.
-//
+
 
 import UIKit
 import CoreData
