@@ -37,6 +37,9 @@
                                                     <switch autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="750" verticalHuggingPriority="750" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Оплата" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-Iq-hYJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                        <connections>
+                                                            <action selector="firstSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="DAN-Wq-i4K"/>
+                                                        </connections>
                                                     </switch>
                                                     <switch autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="TopLeft" horizontalHuggingPriority="750" verticalHuggingPriority="750" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Сумма" translatesAutoresizingMaskIntoConstraints="NO" id="c6i-ZL-Pmu">
                                                         <rect key="frame" x="0.0" y="45" width="51" height="31"/>
@@ -45,10 +48,16 @@
                                                     <switch autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="750" verticalHuggingPriority="750" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Лет" translatesAutoresizingMaskIntoConstraints="NO" id="RM6-pj-Fmm">
                                                         <rect key="frame" x="0.0" y="90" width="51" height="31"/>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                        <connections>
+                                                            <action selector="thirdSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="a4b-KT-oOu"/>
+                                                        </connections>
                                                     </switch>
                                                     <switch autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="750" verticalHuggingPriority="750" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Лет" translatesAutoresizingMaskIntoConstraints="NO" id="EOU-Zx-LGH">
                                                         <rect key="frame" x="0.0" y="135" width="51" height="31"/>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                        <connections>
+                                                            <action selector="fourthSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="AMO-ee-OFf"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -63,6 +72,9 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        <connections>
+                                                            <action selector="sent1:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="jdO-oG-cVy"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uSM-Yu-5Nk">
                                                         <rect key="frame" x="0.0" y="44" width="80" height="34"/>
@@ -72,6 +84,9 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="sent2:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="QKY-Vn-KPQ"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-ws-7qk">
                                                         <rect key="frame" x="0.0" y="88" width="80" height="34"/>
@@ -81,6 +96,9 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="sent3:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="EdF-NM-ZRh"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="TopLeft" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-NL-DPK">
                                                         <rect key="frame" x="0.0" y="132" width="80" height="34"/>
@@ -90,6 +108,9 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="sent5:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ove-Hr-JvQ"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -125,6 +146,9 @@
                                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="sent4:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="TkC-QW-tjj"/>
+                                                                </connections>
                                                             </textField>
                                                             <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="мес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="YFA-LK-ReP">
                                                                 <rect key="frame" x="88" y="0.0" width="28" height="34"/>
@@ -201,6 +225,19 @@
                             <constraint firstItem="7ck-dJ-HQp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="x1q-sf-wga"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="method" destination="1p4-es-n6z" id="6Np-qJ-zbE"/>
+                        <outlet property="response" destination="JQH-hB-bk4" id="4QR-4D-YNs"/>
+                        <outlet property="response2" destination="y4u-pf-v6V" id="zGU-To-YkW"/>
+                        <outlet property="switch1" destination="uCA-Iq-hYJ" id="K8E-n7-Tzf"/>
+                        <outlet property="switch3" destination="RM6-pj-Fmm" id="xFD-Q3-yxo"/>
+                        <outlet property="switch4" destination="EOU-Zx-LGH" id="odo-n5-eaY"/>
+                        <outlet property="text1" destination="F6n-VL-v2m" id="VS4-KM-516"/>
+                        <outlet property="text2" destination="uSM-Yu-5Nk" id="Prl-Wl-0P2"/>
+                        <outlet property="text3" destination="Mdt-ws-7qk" id="jNu-wI-Vae"/>
+                        <outlet property="text4" destination="gqd-D3-toL" id="lsR-5G-UpK"/>
+                        <outlet property="text5" destination="TXJ-NL-DPK" id="Sn7-pA-pWX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
