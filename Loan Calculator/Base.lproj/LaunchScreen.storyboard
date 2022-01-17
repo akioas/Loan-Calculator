@@ -16,32 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="0pj-9e-5DB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hourglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NMT-fl-SHA">
-                                        <rect key="frame" x="157" y="399" width="100" height="97.5"/>
-                                        <color key="tintColor" red="0.088477914970000002" green="0.080027672019999996" blue="0.30053367079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="aWh-wr-a7f"/>
-                                            <constraint firstAttribute="width" constant="100" id="l4f-Cp-dIt"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="ccO-M0-Pvi"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hourglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kEp-DA-CAE">
+                                <rect key="frame" x="157" y="399" width="100" height="97.5"/>
+                                <color key="tintColor" red="0.088477914970000002" green="0.080027672019999996" blue="0.30053367079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="NMT-fl-SHA" firstAttribute="centerY" secondItem="0pj-9e-5DB" secondAttribute="centerY" id="2tG-Wh-K2b"/>
-                                    <constraint firstItem="NMT-fl-SHA" firstAttribute="centerY" secondItem="0pj-9e-5DB" secondAttribute="centerY" id="94m-Gh-yqd"/>
-                                    <constraint firstItem="NMT-fl-SHA" firstAttribute="centerX" secondItem="0pj-9e-5DB" secondAttribute="centerX" id="Jd6-9b-eDD"/>
-                                    <constraint firstItem="NMT-fl-SHA" firstAttribute="centerX" secondItem="0pj-9e-5DB" secondAttribute="centerX" id="RLE-ry-9XU"/>
+                                    <constraint firstAttribute="height" constant="100" id="Z4c-wk-4fw"/>
+                                    <constraint firstAttribute="width" constant="100" id="pcO-A8-Idg"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="kEp-DA-CAE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3jJ-it-SeJ"/>
+                            <constraint firstItem="kEp-DA-CAE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lbl-Nq-V3n"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -51,9 +40,6 @@
     </scenes>
     <resources>
         <image name="hourglass" catalog="system" width="102" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

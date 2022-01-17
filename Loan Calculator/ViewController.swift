@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     var yearPercent = 0.0
     var monthlyPayment = 0 //оплата за месяц
     
-    
+
     
     @IBAction func sent1(_ sender: UITextField) {
         
@@ -86,19 +86,16 @@ class ViewController: UIViewController {
             switch4.setOn(false, animated: true)
             method.text = "Расчет суммы кредита по % годовых, сроку кредита и ежемесячному платежу"
             
-            //print(sum)
-            if (yearPercent == 0) || (monthlyPayment == 0) || (monthsAmount == 0){
-
-                text1.text = "Ошибка"
-            }
-            else {
+            if !((yearPercent == 0) || (monthlyPayment == 0) || (monthsAmount == 0)){
                 var payment = 0.0
                 var sum_r = 0.0
                 (sum_r, payment) = ReturnModel().firstReturn(yearPercent: yearPercent, monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
                 text1.text = String(format: "%.2f", sum_r)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
+                
             }
+            
         }
         
         
@@ -109,12 +106,7 @@ class ViewController: UIViewController {
 
             switch1.setOn(false, animated: true)
             switch4.setOn(false, animated: true)
-            if (monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0){
-                text4.text = "Ошибка"
-                text3.text = "Ошибка"
-            }
-            else
-            {
+            if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
                 var years = 0
                 var months = 0
                 var payment = 0.0
@@ -124,8 +116,8 @@ class ViewController: UIViewController {
                 text4.text = String(months)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
-                
             }
+            
         }
     }
     @IBAction func fourthSwitch(_ sender: UISwitch) {
@@ -134,10 +126,7 @@ class ViewController: UIViewController {
             switch3.setOn(false, animated: true)
             switch1.setOn(false, animated: true)
             
-            if (yearPercent == 0) || (mortgageAmount == 0) || (monthsAmount == 0){
-                text5.text = "Ошибка"
-            }
-            else {
+            if !((yearPercent == 0) || (mortgageAmount == 0) || (monthsAmount == 0)){
                 var monthlyPayment = 0
                 var payment = 0.0
                 
@@ -147,9 +136,7 @@ class ViewController: UIViewController {
                 
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
-                
             }
-            
             
             
         }
