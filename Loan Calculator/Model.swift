@@ -1,5 +1,7 @@
 
 import Foundation
+import CoreData
+import UIKit
 
 
 
@@ -83,12 +85,49 @@ class ReturnModel{
         return (monthlyPayment, payment)
     }
     
+    func saveData(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double, monthsAmount:Int){
+        
+           
+                
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let user = Feature(context: context)
+        user.yearPercent = yearPercent
+        user.mortgageAmount = Double(mortgageAmount)
+        user.monthlyPayment = Double(monthlyPayment)
+        user.monthsAmount = Int16(monthsAmount)
+        
+        AppDelegate().saveContext()
+
+    }
     
+    
+    
+    
+    func loadData()->(yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int){
+        
+            
+                
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        var user:[Feature] = []
+        
+        do {
+            user = try context.fetch(Feature.fetchRequest())
+        }
+        catch{
+            
+        }
+        return(user.last!.yearPercent,
+               user.last!.mortgageAmount,
+               user.last!.monthlyPayment,
+               Int(user.last!.monthsAmount))
+        
+        
+
+    }
     
 }
-
-
-
 
 
 

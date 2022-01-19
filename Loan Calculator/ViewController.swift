@@ -11,10 +11,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var text4: UITextField!
     @IBOutlet weak var text5: UITextField!
     
-
+    
     @IBOutlet weak var switch1: UISwitch!
     
-
+    
     @IBOutlet weak var switch3: UISwitch!
     @IBOutlet weak var switch4: UISwitch!
     
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     var yearPercent = 0.0
     var monthlyPayment = 0 //оплата за месяц
     
-
+    
     
     @IBAction func sent1(_ sender: UITextField) {
         
@@ -43,45 +43,45 @@ class ViewController: UIViewController {
     
     @IBAction func sent2(_ sender: UITextField) {
         removeNonDigits(sender)
-            if let value = text2.text {
-                yearPercent = Double(value) ?? 0
-            }
+        if let value = text2.text {
+            yearPercent = Double(value) ?? 0
+        }
         
     }
     
     @IBAction func sent3(_ sender: UITextField) {
         removeNonDigits(sender)
-            if let value = text3.text {
-                let yearsGet = Int(value) ?? 0
-                monthsAmount = yearsGet * 12
-            }
+        if let value = text3.text {
+            let yearsGet = Int(value) ?? 0
+            monthsAmount = yearsGet * 12
+        }
         
     }
     
     @IBAction func sent4(_ sender: UITextField) {
         removeNonDigits(sender)
-            if let value = text4.text {
-                let monthsGet = Int(value) ?? 0
-                monthsAmount = monthsAmount + monthsGet
-            }
+        if let value = text4.text {
+            let monthsGet = Int(value) ?? 0
+            monthsAmount = monthsAmount + monthsGet
+        }
         
     }
     
     
     @IBAction func sent5(_ sender: UITextField) {
         removeNonDigits(sender)
-            if let value = text5.text {
-                
-                monthlyPayment = Int(value) ?? 0
-                
-            }
+        if let value = text5.text {
+            
+            monthlyPayment = Int(value) ?? 0
+            
+        }
         
     }
     
     
     @IBAction func firstSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
-
+            
             switch3.setOn(false, animated: true)
             switch4.setOn(false, animated: true)
             method.text = "Расчет суммы кредита по % годовых, сроку кредита и ежемесячному платежу"
@@ -93,6 +93,9 @@ class ViewController: UIViewController {
                 text1.text = String(format: "%.2f", sum_r)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
+                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+                print("SAVE")
+                
                 
             }
             
@@ -100,10 +103,10 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     @IBAction func thirdSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
-
+            
             switch1.setOn(false, animated: true)
             switch4.setOn(false, animated: true)
             if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
@@ -117,13 +120,14 @@ class ViewController: UIViewController {
                 text4.text = String(months)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
+                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
         }
     }
     @IBAction func fourthSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
-
+            
             switch3.setOn(false, animated: true)
             switch1.setOn(false, animated: true)
             
@@ -137,6 +141,8 @@ class ViewController: UIViewController {
                 
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
+                
+                //ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:(monthlyPayment), yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
             
@@ -145,3 +151,25 @@ class ViewController: UIViewController {
 }
 
 
+
+
+class SecViewController: UIViewController {
+    
+    @IBOutlet weak var text1: UILabel!
+    @IBOutlet weak var text2: UILabel!
+    
+    @IBOutlet weak var text3: UILabel!
+    
+    @IBOutlet weak var text4: UILabel!
+    
+    //yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int
+    @IBAction func showData(_ sender: UISwitch) {
+        let history = ReturnModel().loadData()
+       
+        text1.text = String(history.yearPercent)
+        text2.text = String(history.mortgageAmount)
+        text3.text = String(history.monthlyPayment)
+        text4.text = String(history.monthsAmount)
+   }
+    
+}

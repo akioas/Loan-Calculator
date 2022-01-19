@@ -654,6 +654,7 @@
 			currentVersion = 4A71F06E2795862E0016F3DA /* Loan_Calculator.xcdatamodel */;
 			path = Loan_Calculator.xcdatamodeld;
 			sourceTree = "<group>";
+			usesTabs = 0;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
