@@ -93,7 +93,7 @@ class ViewController: UIViewController {
                 text1.text = String(format: "%.2f", sum_r)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
-                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+                ReturnModel().saveData(mortgageAmount:Int(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
                 print("SAVE")
                 
                 
@@ -162,9 +162,11 @@ class SecViewController: UIViewController {
     
     @IBOutlet weak var text4: UILabel!
     
+    
+    
     //yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int
-    @IBAction func showData(_ sender: UISwitch) {
-        let history = ReturnModel().loadData()
+    @IBAction func showData(_ sender: UIButton) {
+        let history = ReturnModel().loadData(user:&user)
        
         text1.text = String(history.yearPercent)
         text2.text = String(history.mortgageAmount)

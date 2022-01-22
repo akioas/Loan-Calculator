@@ -3,6 +3,7 @@ import Foundation
 import CoreData
 import UIKit
 
+var user:[Feature]? = []
 
 
 class ReturnModel{
@@ -16,6 +17,7 @@ class ReturnModel{
     var months = 0
     var years = 0
     var monthlyPayment = 0.0
+    
 
     
     func monthPercentCalculation(_ yearPercent:Double) -> Double {
@@ -93,9 +95,12 @@ class ReturnModel{
 
         let user = Feature(context: context)
         user.yearPercent = yearPercent
+//        print(mortgageAmount)
+//        print(Double(mortgageAmount))
         user.mortgageAmount = Double(mortgageAmount)
         user.monthlyPayment = Double(monthlyPayment)
         user.monthsAmount = Int16(monthsAmount)
+        
         
         AppDelegate().saveContext()
 
@@ -104,13 +109,13 @@ class ReturnModel{
     
     
     
-    func loadData()->(yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int){
+    func loadData( user:inout [Feature]?)->(yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int){
         
             
                 
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-        var user:[Feature] = []
+        
         
         do {
             user = try context.fetch(Feature.fetchRequest())
@@ -118,10 +123,11 @@ class ReturnModel{
         catch{
             
         }
-        return(user.last!.yearPercent,
-               user.last!.mortgageAmount,
-               user.last!.monthlyPayment,
-               Int(user.last!.monthsAmount))
+        print(user ?? [])
+        return(user!.last!.yearPercent,
+               user!.last!.mortgageAmount,
+               user!.last!.monthlyPayment,
+               Int(user!.last!.monthsAmount))
         
         
 
