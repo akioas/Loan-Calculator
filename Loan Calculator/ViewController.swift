@@ -162,16 +162,48 @@ class SecViewController: UIViewController {
     
     @IBOutlet weak var text4: UILabel!
     
+    var index = -3
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showData(index: &index)
+        }
     
     
     //yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int
-    @IBAction func showData(_ sender: UIButton) {
-        let history = ReturnModel().loadData(user:&user)
-       
-        text1.text = String(history.yearPercent)
-        text2.text = String(history.mortgageAmount)
-        text3.text = String(history.monthlyPayment)
-        text4.text = String(history.monthsAmount)
+    @IBAction func pressPrevious(_ sender: UIButton) {
+        index -= 1
+        showData(index: &index)
    }
+    
+    @IBAction func pressNext(_ sender: UIButton) {
+        index += 1
+        showData(index: &index)
+   }
+    
+    func showData(index:inout Int){
+        let history = ReturnModel().loadData(user:&user)
+        print(index)
+        if !(history!.isEmpty){
+            if index >= history!.count{
+                index = history!.count - 1
+            }
+            if index == -3{
+                index = history!.count - 1
+            }
+            if index < 0{
+                index = 0
+            }
+            
+            print(index)
+            
+            text1.text = "% годовых: " + String(history![index].yearPercent)
+            text2.text = "сумма кредита: " + String(history![index].mortgageAmount)
+            text3.text = "ежемесячный платеж: " + String(history![index].monthlyPayment)
+            text4.text = "количество месяцев: " + String(history![index].monthsAmount)
+        }
+    }
+        
+    
     
 }

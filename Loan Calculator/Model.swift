@@ -4,6 +4,10 @@ import CoreData
 import UIKit
 
 var user:[Feature]? = []
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+
+
 
 
 class ReturnModel{
@@ -91,15 +95,14 @@ class ReturnModel{
         
            
                 
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        let user = Feature(context: context)
-        user.yearPercent = yearPercent
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let userToAdd = Feature(context: context)
+        userToAdd.yearPercent = yearPercent
 //        print(mortgageAmount)
 //        print(Double(mortgageAmount))
-        user.mortgageAmount = Double(mortgageAmount)
-        user.monthlyPayment = Double(monthlyPayment)
-        user.monthsAmount = Int16(monthsAmount)
+        userToAdd.mortgageAmount = Double(mortgageAmount)
+        userToAdd.monthlyPayment = Double(monthlyPayment)
+        userToAdd.monthsAmount = Int16(monthsAmount)
         
         
         AppDelegate().saveContext()
@@ -109,11 +112,10 @@ class ReturnModel{
     
     
     
-    func loadData( user:inout [Feature]?)->(yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int){
+    func loadData( user:inout [Feature]?)->([Feature]?){
         
             
                 
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         
         
@@ -124,10 +126,7 @@ class ReturnModel{
             
         }
         print(user ?? [])
-        return(user!.last!.yearPercent,
-               user!.last!.mortgageAmount,
-               user!.last!.monthlyPayment,
-               Int(user!.last!.monthsAmount))
+        return(user)
         
         
 

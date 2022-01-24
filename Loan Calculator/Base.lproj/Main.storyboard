@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" alignment="top" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="xfu-dW-Oo0">
-                                <rect key="frame" x="120" y="312.5" width="174" height="217"/>
+                                <rect key="frame" x="118" y="284" width="178" height="274"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% годовых" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlP-Zw-OqR">
                                         <rect key="frame" x="0.0" y="0.0" width="86" height="20.5"/>
@@ -294,17 +294,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-np-xn4">
-                                        <rect key="frame" x="0.0" y="186" width="174" height="31"/>
+                                        <rect key="frame" x="0.0" y="186" width="178" height="31"/>
                                         <color key="backgroundColor" red="0.1064488526" green="0.096282262790000003" blue="0.36157570420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Показать последний"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Показать предыдущий"/>
                                         <connections>
-                                            <action selector="showData:" destination="LR1-fZ-wwk" eventType="touchUpInside" id="N7i-nI-oSX"/>
+                                            <action selector="pressPrevious:" destination="LR1-fZ-wwk" eventType="touchUpInside" id="TL9-K8-gzE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0i-P8-Uhp">
+                                        <rect key="frame" x="0.0" y="243" width="169.5" height="31"/>
+                                        <color key="backgroundColor" red="0.1064488526" green="0.096282262790000003" blue="0.36157570420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Показать следующий"/>
+                                        <connections>
+                                            <action selector="pressNext:" destination="LR1-fZ-wwk" eventType="touchUpInside" id="GkC-YO-KjD"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="i0i-P8-Uhp" firstAttribute="width" secondItem="1Dw-np-xn4" secondAttribute="width" multiplier="0.952247" id="2bv-Fs-umO"/>
                                     <constraint firstItem="1Dw-np-xn4" firstAttribute="centerX" secondItem="xfu-dW-Oo0" secondAttribute="centerX" id="kI9-Dm-zZt"/>
                                 </constraints>
                             </stackView>
