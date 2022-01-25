@@ -79,11 +79,8 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func firstSwitch(_ sender: UISwitch) {
-        if sender.isOn == true {
-            
-            switch3.setOn(false, animated: true)
-            switch4.setOn(false, animated: true)
+    @IBAction func firstButton(_ sender: UIButton) {
+        
             method.text = "Расчет суммы кредита по % годовых, сроку кредита и ежемесячному платежу"
             
             if !((yearPercent == 0) || (monthlyPayment == 0) || (monthsAmount == 0)){
@@ -99,16 +96,13 @@ class ViewController: UIViewController {
                 
             }
             
-        }
+        
         
         
     }
     
-    @IBAction func thirdSwitch(_ sender: UISwitch) {
-        if sender.isOn == true {
-            
-            switch1.setOn(false, animated: true)
-            switch4.setOn(false, animated: true)
+    @IBAction func thirdButton(_ sender: UIButton) {
+        
             if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
                 var years = 0
                 var months = 0
@@ -123,13 +117,10 @@ class ViewController: UIViewController {
                 ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
-        }
+        
     }
-    @IBAction func fourthSwitch(_ sender: UISwitch) {
-        if sender.isOn == true {
-            
-            switch3.setOn(false, animated: true)
-            switch1.setOn(false, animated: true)
+    @IBAction func fourthButton(_ sender: UIButton) {
+        
             
             if !((yearPercent == 0) || (mortgageAmount == 0) || (monthsAmount == 0)){
                 var monthlyPayment = 0.0
@@ -142,12 +133,12 @@ class ViewController: UIViewController {
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
                 
-                //ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:(monthlyPayment), yearPercent:yearPercent, monthsAmount:monthsAmount)
+                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:Int((monthlyPayment)), yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
             
         }
-    }
+    
 }
 
 
@@ -181,6 +172,10 @@ class SecViewController: UIViewController {
         showData(index: &index)
    }
     
+    @IBAction func closeButton(_ sender: UIButton){
+        self.dismiss(animated: true, completion: nil)
+   }
+    
     func showData(index:inout Int){
         let history = ReturnModel().loadData(user:&user)
         print(index)
@@ -198,9 +193,9 @@ class SecViewController: UIViewController {
             print(index)
             
             text1.text = "% годовых: " + String(history![index].yearPercent)
-            text2.text = "сумма кредита: " + String(history![index].mortgageAmount)
-            text3.text = "ежемесячный платеж: " + String(history![index].monthlyPayment)
-            text4.text = "количество месяцев: " + String(history![index].monthsAmount)
+            text2.text = "Сумма кредита: " + String(history![index].mortgageAmount)
+            text3.text = "Ежемесячный платеж: " + String(history![index].monthlyPayment)
+            text4.text = "Количество месяцев: " + String(history![index].monthsAmount)
         }
     }
         
