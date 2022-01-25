@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         
         
     }
-    
+    /*
     @IBAction func thirdButton(_ sender: UIButton) {
         
             if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
@@ -119,6 +119,7 @@ class ViewController: UIViewController {
             
         
     }
+     */
     @IBAction func fourthButton(_ sender: UIButton) {
         
             
