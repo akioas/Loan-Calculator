@@ -100,26 +100,27 @@ class ViewController: UIViewController {
         
         
     }
-    /*
+    
     @IBAction func thirdButton(_ sender: UIButton) {
         
             if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
                 var years = 0
                 var months = 0
                 var payment = 0.0
+                var paymentMoney = 0.0
                 
-                (monthsAmount, months, years, payment) = ReturnModel().thirdReturn(mortgageAmount: mortgageAmount, monthlyPayment: monthlyPayment,yearPercent:yearPercent)
+                (monthsAmount, months, years, payment, paymentMoney) = ReturnModel().thirdReturn(mortgageAmount: mortgageAmount, monthlyPayment: monthlyPayment,yearPercent:yearPercent)
                 method.text = "Расчет срока выплат по сумме кредита, % годовых и ежемесячному платежу"
                 text3.text = String(years)
                 text4.text = String(months)
                 response.text = String(format: "%.2f", payment) + "%"
-                response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
+                response2.text = String(format: "%.2f", (paymentMoney))
                 ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
         
     }
-     */
+     
     @IBAction func fourthButton(_ sender: UIButton) {
         
             

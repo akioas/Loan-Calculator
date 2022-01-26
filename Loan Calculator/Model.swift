@@ -59,28 +59,30 @@ class ReturnModel{
     }
 
     
-    /*
     
-    func thirdReturn(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double) -> (Int, Int, Int, Double){
-        monthPercent = monthPercentCalculation(yearPercent)
+    
+    func thirdReturn(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double) -> (Int, Int, Int, Double, Double){
+        monthPercent = Double(monthPercentCalculation(yearPercent))
         monthsAmount = 1
-        amount = 0.0
+        amount = Double(monthlyPayment)
         sumCalculated = Double(mortgageAmount)
 
         while sumCalculated > amount
         {
-            amount = amount + Double(monthlyPayment) * Double((100 - monthPercent))/100
+            sumCalculated = sumCalculated * (1 + monthPercent) - Double(monthlyPayment)
             monthsAmount += 1
         }
+        let lastPayment = sumCalculated
+        let paymentMoney = Double(monthlyPayment) * Double (monthsAmount - 1) + lastPayment
 
         months = monthsAmount % 12
         years = monthsAmount / 12
         
-        payment = paymentCalculation(monthlyPayment:Double(monthlyPayment), mortgageAmount: Double(mortgageAmount), monthsAmount:monthsAmount)
+        payment = (100 - (Double(mortgageAmount)/Double(paymentMoney) * 100))
         
-        return (monthsAmount, months, years, payment)
+        return (monthsAmount, months, years, payment, paymentMoney)
     }
-    */
+    
     
     func fourthReturn(mortgageAmount:Int, monthsAmount:Int, yearPercent:Double) -> (Double, Double){
         monthPercent = monthPercentCalculation(yearPercent)
