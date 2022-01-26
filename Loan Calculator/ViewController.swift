@@ -176,6 +176,13 @@ class SecViewController: UIViewController {
     @IBAction func closeButton(_ sender: UIButton){
         self.dismiss(animated: true, completion: nil)
    }
+    @IBAction func deleteButton(_ sender: UIButton){
+        ReturnModel().deleteData()
+        index = -3
+        showData(index: &index)
+   }
+    
+    
     
     func showData(index:inout Int){
         let history = ReturnModel().loadData(user:&user)
@@ -197,6 +204,11 @@ class SecViewController: UIViewController {
             text2.text = "Сумма кредита: " + String(history![index].mortgageAmount)
             text3.text = "Ежемесячный платеж: " + String(history![index].monthlyPayment)
             text4.text = "Количество месяцев: " + String(history![index].monthsAmount)
+        } else {
+            text1.text = "% годовых: "
+            text2.text = "Сумма кредита: "
+            text3.text = "Ежемесячный платеж: "
+            text4.text = "Количество месяцев: "
         }
     }
         

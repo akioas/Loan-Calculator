@@ -93,9 +93,7 @@ class ReturnModel{
     }
     
     func saveData(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double, monthsAmount:Int){
-        
-           
-                
+   
 //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let userToAdd = Feature(context: context)
         userToAdd.yearPercent = yearPercent
@@ -110,16 +108,15 @@ class ReturnModel{
 
     }
     
-    
+    func deleteData(){
+        for userToDelete in user!{
+            context.delete(userToDelete)
+        }
+        AppDelegate().saveContext()
+    }
     
     
     func loadData( user:inout [Feature]?)->([Feature]?){
-        
-            
-                
-
-        
-        
         do {
             user = try context.fetch(Feature.fetchRequest())
         }
