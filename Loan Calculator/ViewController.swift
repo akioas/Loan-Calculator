@@ -25,11 +25,11 @@ class ViewController: UIViewController {
     
     
     
-    var mortgageAmount = 0 // сумма кредита
+    var mortgageAmount = 0.0 // сумма кредита
     var monthsAmount = 0 // количество месяцев
     var monthPercent = 0.0 // процентная ставка
     var yearPercent = 0.0
-    var monthlyPayment = 0 //оплата за месяц
+    var monthlyPayment = 0.0 //оплата за месяц
     
     
     
@@ -37,14 +37,14 @@ class ViewController: UIViewController {
         
         removeNonDigits(sender)
         if let value = text1.text {
-            mortgageAmount = Int(value) ?? 0
+            mortgageAmount = Double(value) ?? 0.0
         }
     }
     
     @IBAction func sent2(_ sender: UITextField) {
         removeNonDigits(sender)
         if let value = text2.text {
-            yearPercent = Double(value) ?? 0
+            yearPercent = Double(value) ?? 0.0
         }
         
     }
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         removeNonDigits(sender)
         if let value = text5.text {
             
-            monthlyPayment = Int(value) ?? 0
+            monthlyPayment = Double(value) ?? 0.0
             
         }
         
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
                 text1.text = String(format: "%.2f", sum_r)
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
-                ReturnModel().saveData(mortgageAmount:Int(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+                ReturnModel().saveData(mortgageAmount:(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
                 print("SAVE")
                 
                 
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
                 response.text = String(format: "%.2f", payment) + "%"
                 response2.text = String(format: "%.2f", (Double(monthlyPayment) * Double (monthsAmount)))
                 
-                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:Int((monthlyPayment)), yearPercent:yearPercent, monthsAmount:monthsAmount)
+                ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
             }
             
             

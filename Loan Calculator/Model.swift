@@ -32,7 +32,7 @@ class ReturnModel{
         return pow((1 + (monthPercent)),(Double(monthsAmount)))//+
     }
     
-    func amountCalculation(monthlyPayment:Int, monthPercent:Double, all:Double) -> Double{
+    func amountCalculation(monthlyPayment:Double, monthPercent:Double, all:Double) -> Double{
         return Double(monthlyPayment) / (monthPercent * all / (all - 1))
     }
     
@@ -40,15 +40,15 @@ class ReturnModel{
     
     func paymentCalculation(monthlyPayment:Double, mortgageAmount:Double, monthsAmount:Int) -> Double{
         let payment = (monthlyPayment) * Double(monthsAmount)
-        return (100 - (mortgageAmount/Double(payment) * 100))
+        return (100 - (mortgageAmount / (payment) * 100))
     }
     
-    func moonthlyPaymentCalculation(mortgageAmount:Int,monthPercent:Double,all:Double) -> Double{
+    func moonthlyPaymentCalculation(mortgageAmount:Double,monthPercent:Double,all:Double) -> Double{
         return (Double(mortgageAmount) * monthPercent * all / (all - 1))
     }
     
     
-    func firstReturn(yearPercent:Double, monthlyPayment:Int, monthsAmount:Int) -> (Double, Double){
+    func firstReturn(yearPercent:Double, monthlyPayment:Double, monthsAmount:Int) -> (Double, Double){
         
         monthPercent = monthPercentCalculation(yearPercent)
         all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
@@ -58,9 +58,9 @@ class ReturnModel{
         return (amount, payment)
     }
     
-    func secondReturn(mortgageAmount:Double, monthlyPayment:Int, monthsAmount:Int) -> (Double, Double){
+    func secondReturn(mortgageAmount:Double, monthlyPayment:Double, monthsAmount:Int) -> (Double, Double){
 
-        let paymentMoney = Double(monthsAmount * monthlyPayment)
+        let paymentMoney = Double(monthsAmount) * monthlyPayment
         var monthPercentTol = 0.01/100
         monthPercent = monthPercentTol
         var maxPercent = 10000.0/100
@@ -68,23 +68,23 @@ class ReturnModel{
         var stopPoint = 0.0
 
         all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
-        var monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Int(mortgageAmount),monthPercent:monthPercent,all:all)
-        var ratio = monthlyPaymentCalculated / Double(monthlyPayment)
+        var monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Double(mortgageAmount),monthPercent:monthPercent,all:all)
+        var ratio = monthlyPaymentCalculated / (monthlyPayment)
 
         
 
  
             while (ratio < 0.9999){
                 all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
-                monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Int(mortgageAmount),monthPercent:monthPercent,all:all)
-                ratio = monthlyPaymentCalculated / Double(monthlyPayment)
+                monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Double(mortgageAmount),monthPercent:monthPercent,all:all)
+                ratio = monthlyPaymentCalculated / (monthlyPayment)
                 print(ratio)
                 monthPercent += monthPercentTol
                 print(monthPercent)
                 if (ratio > 1.0001){
                     stopPoint = monthPercent
                     monthPercentTol = monthPercentTol / 2
-                    monthPercent = stopPoint - 10 * monthPercentTol
+                    monthPercent = stopPoint - 8 * monthPercentTol
                     if monthPercent < 0 {
                         monthPercent = monthPercentTol
                     }
@@ -102,7 +102,7 @@ class ReturnModel{
     
     
     
-    func thirdReturn(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double) -> (Int, Int, Int, Double, Double){
+    func thirdReturn(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double) -> (Int, Int, Int, Double, Double){
         monthPercent = Double(monthPercentCalculation(yearPercent))
         monthsAmount = 1
         amount = Double(monthlyPayment)
@@ -125,7 +125,7 @@ class ReturnModel{
     }
     
     
-    func fourthReturn(mortgageAmount:Int, monthsAmount:Int, yearPercent:Double) -> (Double, Double){
+    func fourthReturn(mortgageAmount:Double, monthsAmount:Int, yearPercent:Double) -> (Double, Double){
         monthPercent = monthPercentCalculation(yearPercent)
 
         all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
@@ -135,7 +135,7 @@ class ReturnModel{
         return (monthlyPayment, payment)
     }
     
-    func saveData(mortgageAmount:Int, monthlyPayment:Int, yearPercent:Double, monthsAmount:Int){
+    func saveData(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double, monthsAmount:Int){
    
 //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let userToAdd = Feature(context: context)
