@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var text1: UITextField!
     @IBOutlet weak var text2: UITextField!
@@ -12,11 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var text5: UITextField!
     
     
-    @IBOutlet weak var switch1: UISwitch!
     
-    
-    @IBOutlet weak var switch3: UISwitch!
-    @IBOutlet weak var switch4: UISwitch!
     
     @IBOutlet weak var response: UILabel!
     @IBOutlet weak var response2: UILabel!
@@ -32,17 +28,41 @@ class ViewController: UIViewController {
     var monthlyPayment = 0.0 //оплата за месяц
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        text1.delegate = self
+        text2.delegate = self
+        text3.delegate = self
+        text4.delegate = self
+        text5.delegate = self
+
+        }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+       if textField == text3 || textField == text4 {
+            let allowedCharacters = CharacterSet(charactersIn:"0123456789")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        if textField == text1 || textField == text2 || textField == text5 {
+            let allowedCharacters = CharacterSet(charactersIn:".0123456789")
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
+    
     
     @IBAction func sent1(_ sender: UITextField) {
         
-        removeNonDigits(sender)
+        //removeNonDigits(sender)
         if let value = text1.text {
             mortgageAmount = Double(value) ?? 0.0
         }
     }
     
     @IBAction func sent2(_ sender: UITextField) {
-        removeNonDigits(sender)
+       // removeNonDigits(sender)
         if let value = text2.text {
             yearPercent = Double(value) ?? 0.0
         }
@@ -50,7 +70,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sent3(_ sender: UITextField) {
-        removeNonDigits(sender)
+      //  removeNonDigits(sender)
         if let value = text3.text {
             let yearsGet = Int(value) ?? 0
             monthsAmount = yearsGet * 12
@@ -59,7 +79,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sent4(_ sender: UITextField) {
-        removeNonDigits(sender)
+     //   removeNonDigits(sender)
         if let value = text4.text {
             let monthsGet = Int(value) ?? 0
             monthsAmount = monthsAmount + monthsGet
@@ -69,7 +89,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func sent5(_ sender: UITextField) {
-        removeNonDigits(sender)
+      //  removeNonDigits(sender)
         if let value = text5.text {
             
             monthlyPayment = Double(value) ?? 0.0
