@@ -57,6 +57,47 @@ class ReturnModel{
 
         return (amount, payment)
     }
+    
+    func secondReturn(mortgageAmount:Double, monthlyPayment:Int, monthsAmount:Int) -> (Double, Double){
+
+        let paymentMoney = Double(monthsAmount * monthlyPayment)
+        var monthPercentTol = 0.01/100
+        monthPercent = monthPercentTol
+        var maxPercent = 10000.0/100
+        let arrayCount = Int(maxPercent / monthPercentTol)
+        var stopPoint = 0.0
+
+        all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
+        var monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Int(mortgageAmount),monthPercent:monthPercent,all:all)
+        var ratio = monthlyPaymentCalculated / Double(monthlyPayment)
+
+        
+
+ 
+            while (ratio < 0.9999){
+                all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
+                monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Int(mortgageAmount),monthPercent:monthPercent,all:all)
+                ratio = monthlyPaymentCalculated / Double(monthlyPayment)
+                print(ratio)
+                monthPercent += monthPercentTol
+                print(monthPercent)
+                if (ratio > 1.0001){
+                    stopPoint = monthPercent
+                    monthPercentTol = monthPercentTol / 2
+                    monthPercent = stopPoint - 10 * monthPercentTol
+                    if monthPercent < 0 {
+                        monthPercent = monthPercentTol
+                    }
+                }
+        }
+        
+        
+        
+        let yearPercent = monthPercent*12*100
+
+        return (yearPercent, paymentMoney)
+    }
+
 
     
     
