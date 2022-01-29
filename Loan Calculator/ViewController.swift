@@ -91,20 +91,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    var calculatedText = ""
+    var monthsText = ""
+    var responseText = ""
+    var secondResponseText = ""
+    var calcMethodText = ""
     
     @IBAction func firstButton(_ sender: UIButton) {
         
-            method.text = methodText(1)
+            
             
             if !((yearPercent == 0) || (monthlyPayment == 0) || (monthsAmount == 0)){
                 
                 
-                (sum_r, paymentPercent, paymentMoney, _) = ReturnModel().firstReturn(yearPercent: yearPercent, monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
-                text1.text = String(format: "%.2f", sum_r)
-                response.text = String(format: "%.2f", paymentPercent) + "%"
-                response2.text = String(format: "%.2f", (paymentMoney))
-                saveData(mortgageAmount:(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
-                print("SAVE")
+                (calculatedText, responseText, secondResponseText, calcMethodText) = Responses().firstMethod(yearPercent: yearPercent, monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
+                method.text = calcMethodText
+                text1.text = calculatedText
+                response.text = responseText
+                response2.text = secondResponseText
+                
+              
                 
                 
             }
@@ -113,21 +119,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func secondButton(_ sender: UIButton) {
         
-            method.text = methodText(2)
+            
             
             if !((mortgageAmount == 0) || (monthlyPayment == 0) || (monthsAmount == 0)){
                
-                var responseText = true
-                (yearPercent, paymentPercent, paymentMoney, responseText) = ReturnModel().secondReturn(mortgageAmount: Double(mortgageAmount), monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
-                text2.text = String(format: "%.2f", yearPercent)
-                response.text = String(format: "%.2f", paymentPercent) + "%"
-                response2.text = String(format: "%.2f", (paymentMoney))
-                if responseText == false {
-                    method.text = "Невозможно рассчитать"
-                }
-                saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
-                print("SAVE")
-                
+               (calculatedText, responseText, secondResponseText, calcMethodText) = Responses().secondMethod(mortgageAmount: Double(mortgageAmount), monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
+               method.text = calcMethodText
+               text2.text = calculatedText
+               response.text = responseText
+               response2.text = secondResponseText
+  
                 
             }
         
@@ -138,15 +139,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func thirdButton(_ sender: UIButton) {
         
             if !((monthlyPayment == 0) || (mortgageAmount == 0) || (yearPercent == 0)){
-                
-                
-                (monthsAmount, months, years, paymentPercent, paymentMoney, _) = ReturnModel().thirdReturn(mortgageAmount: mortgageAmount, monthlyPayment: monthlyPayment,yearPercent:yearPercent)
-                method.text = methodText(3)
-                text3.text = String(years)
-                text4.text = String(months)
-                response.text = String(format: "%.2f", paymentPercent) + "%"
-                response2.text = String(format: "%.2f", (paymentMoney))
-                saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+  
+  (calculatedText, monthsText, responseText, secondResponseText, calcMethodText) = Responses().thirdMethod(mortgageAmount: mortgageAmount, monthlyPayment: monthlyPayment,yearPercent:yearPercent)
+  method.text = calcMethodText
+  text3.text = calculatedText
+  text4.text = monthsText
+  response.text = responseText
+  response2.text = secondResponseText
             }
     }
      
@@ -156,14 +155,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if !((yearPercent == 0) || (mortgageAmount == 0) || (monthsAmount == 0)){
                 
                 
-                (monthlyPayment, paymentPercent, paymentMoney, _) = ReturnModel().fourthReturn(mortgageAmount: mortgageAmount, monthsAmount: monthsAmount, yearPercent: yearPercent)
-                text5.text = String(format: "%.2f", monthlyPayment)
-                method.text = methodText(4)
-                
-                response.text = String(format: "%.2f", paymentPercent) + "%"
-                response2.text = String(format: "%.2f", paymentMoney)
-                
-                saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+                (calculatedText, responseText, secondResponseText, calcMethodText) = Responses().fourthMethod(mortgageAmount: mortgageAmount, monthsAmount: monthsAmount, yearPercent: yearPercent)
+                method.text = calcMethodText
+                text5.text = calculatedText
+                response.text = responseText
+                response2.text = secondResponseText
             }
             
             
@@ -191,7 +187,7 @@ class SecViewController: UIViewController {
         }
     
     
-    //yearPercent:Double, mortgageAmount:Double, monthlyPayment:Double,  monthsAmount:Int
+   
     @IBAction func pressPrevious(_ sender: UIButton) {
         index -= 1
         showData(index: &index)
@@ -212,33 +208,21 @@ class SecViewController: UIViewController {
    }
     
     
-    
+    var historyPercent = ""
+    var historySum = ""
+    var historyMonthlyPayment = ""
+    var historyMonthsAmount = ""
     func showData(index:inout Int){
-        let history = loadData(user:&user)
-        print(index)
-        if !(history!.isEmpty){
-            if index >= history!.count{
-                index = history!.count - 1
-            }
-            if index == -3{
-                index = history!.count - 1
-            }
-            if index < 0{
-                index = 0
-            }
-            
-            print(index)
-            
-            text1.text = "% годовых: " + String(history![index].yearPercent)
-            text2.text = "Сумма кредита: " + String(history![index].mortgageAmount)
-            text3.text = "Ежемесячный платеж: " + String(history![index].monthlyPayment)
-            text4.text = "Количество месяцев: " + String(history![index].monthsAmount)
-        } else {
-            text1.text = "% годовых: "
-            text2.text = "Сумма кредита: "
-            text3.text = "Ежемесячный платеж: "
-            text4.text = "Количество месяцев: "
-        }
+        
+        
+        (historyPercent, historySum, historyMonthlyPayment, historyMonthsAmount) = historyText(user:&user, index:&index)
+        
+        text1.text = historyPercent
+        text2.text = historySum
+        text3.text = historyMonthlyPayment
+        text4.text = historyMonthsAmount
+        
+        
     }
         
     

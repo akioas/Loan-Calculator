@@ -3,6 +3,8 @@ import Foundation
 import CoreData
 import UIKit
 
+var user:[Feature]? = []
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
 
@@ -159,43 +161,42 @@ class Calculations {
 }
 
 
-var user:[Feature]? = []
-let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
 func saveData(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double, monthsAmount:Int){
-    
-    let userToAdd = Feature(context: context)
-    userToAdd.yearPercent = yearPercent
-    
-    userToAdd.mortgageAmount = Double(mortgageAmount)
-    userToAdd.monthlyPayment = Double(monthlyPayment)
-    userToAdd.monthsAmount = Int16(monthsAmount)
-    
-    
-    AppDelegate().saveContext()
-    
-}
+   
 
-func deleteData(){
-    for userToDelete in user!{
-        context.delete(userToDelete)
-    }
-    AppDelegate().saveContext()
-}
+        let userToAdd = Feature(context: context)
+        userToAdd.yearPercent = yearPercent
 
-
-func loadData( user:inout [Feature]?)->([Feature]?){
-    do {
-        user = try context.fetch(Feature.fetchRequest())
-    }
-    catch{
+        userToAdd.mortgageAmount = (mortgageAmount)
+        userToAdd.monthlyPayment = (monthlyPayment)
+        userToAdd.monthsAmount = Int16(monthsAmount)
         
-    }
-    print(user ?? [])
-    return(user)
-    
-    
-    
-}
+        print("save")
+        AppDelegate().saveContext()
 
+    }
+    
+    func deleteData(){
+        for userToDelete in user!{
+            context.delete(userToDelete)
+        }
+        AppDelegate().saveContext()
+        print("delete")
+    }
+    
+    
+    func loadData( user:inout [Feature]?)->([Feature]?){
+        do {
+            user = try context.fetch(Feature.fetchRequest())
+        }
+        catch{
+            
+        }
+        print(user ?? [])
+        return(user)
+        
+        
+
+    }
