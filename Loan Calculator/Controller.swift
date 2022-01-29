@@ -1,16 +1,15 @@
 import Foundation
 import UIKit
-/*
 
-func removeNonDigits(_ sender: UITextField){
-    if let last = sender.text?.last {
-        let zero: Character = "0"
-        let num: Int = Int(UnicodeScalar(String(last))!.value - UnicodeScalar(String(zero))!.value)
-        if (num < 0 || num > 9) {
-            sender.text?.removeLast()
-            
-        }
-        
-    }
+
+
+func textDigits(string:String) -> Bool{
+    let allowedCharacters = CharacterSet(charactersIn:"0123456789")
+    let characterSet = CharacterSet(charactersIn: string)
+    return allowedCharacters.isSuperset(of: characterSet)
 }
-*/
+func textDigitsDot(string:String) -> Bool{
+    let allowedCharacters = CharacterSet(charactersIn:".0123456789")
+    let characterSet = CharacterSet(charactersIn: string)
+    return allowedCharacters.isSuperset(of: characterSet)
+}
