@@ -3,7 +3,7 @@ import Foundation
 import CoreData
 import UIKit
 
-var user:[Feature]? = []
+var user:[Feature]? 
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
