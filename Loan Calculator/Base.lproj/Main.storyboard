@@ -106,7 +106,7 @@
                                                         </constraints>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                         <connections>
                                                             <action selector="sent2:" destination="BYZ-38-t0r" eventType="editingChanged" id="v0w-lv-FFV"/>
                                                         </connections>
@@ -118,7 +118,7 @@
                                                         </constraints>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
                                                             <action selector="sent3:" destination="BYZ-38-t0r" eventType="editingChanged" id="SW4-8y-Ynx"/>
                                                         </connections>
@@ -130,7 +130,7 @@
                                                         </constraints>
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
                                                             <action selector="sent5:" destination="BYZ-38-t0r" eventType="editingChanged" id="KhP-d4-VNA"/>
                                                         </connections>
@@ -168,7 +168,7 @@
                                                                 <rect key="frame" x="40" y="0.0" width="32" height="34"/>
                                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <action selector="sent4:" destination="BYZ-38-t0r" eventType="editingChanged" id="CwG-Kb-Utv"/>
                                                                 </connections>
