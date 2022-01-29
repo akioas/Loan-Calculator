@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-
+/*
 
 func removeNonDigits(_ sender: UITextField){
     if let last = sender.text?.last {
@@ -13,3 +13,4 @@ func removeNonDigits(_ sender: UITextField){
         
     }
 }
+*/

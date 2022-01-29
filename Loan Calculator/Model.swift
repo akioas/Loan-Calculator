@@ -58,44 +58,55 @@ class ReturnModel{
         return (amount, payment)
     }
     
-    func secondReturn(mortgageAmount:Double, monthlyPayment:Double, monthsAmount:Int) -> (Double, Double){
+    func secondReturn(mortgageAmount:Double, monthlyPayment:Double, monthsAmount:Int) -> (Double, Double, Bool){
 
         let paymentMoney = Double(monthsAmount) * monthlyPayment
         var monthPercentTol = 0.01/100
         monthPercent = monthPercentTol
-        var maxPercent = 10000.0/100
-        let arrayCount = Int(maxPercent / monthPercentTol)
-        var stopPoint = 0.0
+        let maxPercent = 10000.0/100
+        
+      
 
         all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
         var monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Double(mortgageAmount),monthPercent:monthPercent,all:all)
         var ratio = monthlyPaymentCalculated / (monthlyPayment)
 
-        
+        print(ratio)
 
- 
-            while (ratio < 0.9999){
+
+        var itNum = 0
+        while (ratio < 0.999) || (ratio > 1.001){
                 all = allCalculation(monthPercent:monthPercent, monthsAmount:monthsAmount)
                 monthlyPaymentCalculated = moonthlyPaymentCalculation(mortgageAmount:Double(mortgageAmount),monthPercent:monthPercent,all:all)
                 ratio = monthlyPaymentCalculated / (monthlyPayment)
-                print(ratio)
+
                 monthPercent += monthPercentTol
-                print(monthPercent)
-                if (ratio > 1.0001){
-                    stopPoint = monthPercent
+
+                if (ratio > 1.05){
+                  
                     monthPercentTol = monthPercentTol / 2
-                    monthPercent = stopPoint - 8 * monthPercentTol
-                    if monthPercent < 0 {
-                        monthPercent = monthPercentTol
+
+                    monthPercent = monthPercentTol
+                    itNum += 1
+
+                        
+                    
+                    if itNum > 50{
+                        break
                     }
-                }
+                 }
+            
+            
+                 
+                
         }
-        
-        
-        
+        var success = false
+        if itNum < 29{
+            success = true
+        } 
         let yearPercent = monthPercent*12*100
 
-        return (yearPercent, paymentMoney)
+        return (yearPercent, paymentMoney, success)
     }
 
 

@@ -125,10 +125,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if !((mortgageAmount == 0) || (monthlyPayment == 0) || (monthsAmount == 0)){
                 var yearPercent = 0.0
                 var payment = 0.0
-                (yearPercent, payment) = ReturnModel().secondReturn(mortgageAmount: Double(mortgageAmount), monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
+                var responseText = true
+                (yearPercent, payment, responseText) = ReturnModel().secondReturn(mortgageAmount: Double(mortgageAmount), monthlyPayment: monthlyPayment, monthsAmount: monthsAmount)
                 text2.text = String(format: "%.2f", yearPercent)
                 response.text = String(format: "%.2f", 0.0) + "%"
                 response2.text = String(format: "%.2f", payment)
+                if responseText == false {
+                    method.text = "Невозможно рассчитать"
+                }
                 ReturnModel().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
                 print("SAVE")
                 
