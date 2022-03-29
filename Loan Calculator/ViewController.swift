@@ -36,11 +36,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
        if textField == text3 || textField == text4 {
-           return textDigits(string: string)
+           return AllowedText().textDigits(string: string)
         }
         if textField == text1 || textField == text2 || textField == text5 {
             
-            return textDigitsDot(string:string)
+            return AllowedText().textDigitsDot(string:string)
         }
         return true
     }
@@ -170,6 +170,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
 
+
+
+
+
+
 class SecViewController: UIViewController {
     
     @IBOutlet weak var text1: UILabel!
@@ -202,7 +207,7 @@ class SecViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
    }
     @IBAction func deleteButton(_ sender: UIButton){
-        deleteData()
+        SaveData().deleteData()
         index = -3
         showData(index: &index)
    }

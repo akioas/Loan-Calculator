@@ -162,8 +162,8 @@ class Calculations {
 
 
 
-
-func saveData(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double, monthsAmount:Int){
+class SaveData{
+    func saveData(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double, monthsAmount:Int){
    
 
         let userToAdd = Feature(context: context)
@@ -200,3 +200,4 @@ func saveData(mortgageAmount:Double, monthlyPayment:Double, yearPercent:Double, 
         
 
     }
+}

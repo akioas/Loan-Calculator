@@ -1,21 +1,23 @@
 import Foundation
 import UIKit
 
-var allowedCharacters = CharacterSet(charactersIn:"")
-var characterSet = CharacterSet(charactersIn:"")
+
+class AllowedText{
+    var allowedCharacters = CharacterSet(charactersIn:"")
+    var characterSet = CharacterSet(charactersIn:"")
 
 
-func textDigits(string:String) -> Bool{
-    allowedCharacters = CharacterSet(charactersIn:"0123456789")
-    characterSet = CharacterSet(charactersIn: string)
-    return allowedCharacters.isSuperset(of: characterSet)
+    func textDigits(string:String) -> Bool{
+        allowedCharacters = CharacterSet(charactersIn:"0123456789")
+        characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+    func textDigitsDot(string:String) -> Bool{
+        allowedCharacters = CharacterSet(charactersIn:".0123456789")
+        characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
 }
-func textDigitsDot(string:String) -> Bool{
-    allowedCharacters = CharacterSet(charactersIn:".0123456789")
-    characterSet = CharacterSet(charactersIn: string)
-    return allowedCharacters.isSuperset(of: characterSet)
-}
-
 
 var mortgageAmount = 0.0 // сумма кредита
 var monthsAmount = 0 // количество месяцев
@@ -36,7 +38,7 @@ var success = true
 
 
 func historyText(user:inout [Feature]?, index:inout Int) -> (String, String, String, String){
-    let history = loadData(user:&user)
+    let history = SaveData().loadData(user:&user)
     print(history!)
    
     if !(history!.isEmpty){
@@ -50,10 +52,10 @@ func historyText(user:inout [Feature]?, index:inout Int) -> (String, String, Str
             index = 0
         }
   
-        return ("% годовых: " + String(history![index].yearPercent),
-        "Сумма кредита: " + String(history![index].mortgageAmount),
-        "Ежемесячный платеж: " + String(history![index].monthlyPayment),
-        "Количество месяцев: " + String(history![index].monthsAmount))
+        return ("% годовых: " + String(format: "%.2f", history![index].yearPercent),
+        "Сумма кредита: " + String(format: "%.2f", history![index].mortgageAmount),
+        "Ежемесячный платеж: " + String(format: "%.2f", history![index].monthlyPayment),
+        "Количество месяцев: " + String(format: "%.2f", history![index].monthsAmount))
     } else {
         return ("% годовых",
         "Сумма кредита",
@@ -80,7 +82,7 @@ class Responses{
         } else {
             calcMethod = "Невозможно рассчитать"
         }
-        saveData(mortgageAmount:(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+        SaveData().saveData(mortgageAmount:(sum_r), monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
         return (calculated, response, secondResponse, calcMethod)
     }
 
@@ -95,7 +97,7 @@ class Responses{
         } else {
             calcMethod = "Невозможно рассчитать"
         }
-        saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+        SaveData().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
         return (calculated, response, secondResponse, calcMethod)
     }
 
@@ -112,7 +114,7 @@ class Responses{
         } else {
             calcMethod = "Невозможно рассчитать"
         }
-        saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+        SaveData().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
         return (calculated, monthsAnswer, response, secondResponse, calcMethod)
         
     }
@@ -131,7 +133,7 @@ class Responses{
         } else {
             calcMethod = "Невозможно рассчитать"
         }
-        saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
+        SaveData().saveData(mortgageAmount:mortgageAmount, monthlyPayment:monthlyPayment, yearPercent:yearPercent, monthsAmount:monthsAmount)
         return (calculated, response, secondResponse, calcMethod)
     }
 
